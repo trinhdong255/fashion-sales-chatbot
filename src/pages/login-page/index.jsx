@@ -45,31 +45,19 @@ const Login = () => {
       }).unwrap();
 
       if (response) {
-        const role = response?.result?.roles?.[0]?.name;
+        dispatch(
+          setAuth({
+            accessToken: response?.result?.accessToken,
+            email: data?.email,
+            roles: response?.result?.roles,
+          }),
+        );
+        localStorage.setItem("accessToken", response?.result?.accessToken);
+        localStorage.setItem("refreshToken", response?.result?.refreshToken);
 
-        if (role === "ADMIN") {
-          showSnackbar(
-            "Đăng nhập với tư cách Admin không được phép trên cổng User.",
-            "error",
-          );
-          return;
-        }
-
-        if (role === "USER") {
-          dispatch(
-            setAuth({
-              accessToken: response?.result?.accessToken,
-              email: data?.email,
-              roles: response?.result?.roles,
-            }),
-          );
-          localStorage.setItem("accessToken", response?.result?.accessToken);
-          localStorage.setItem("refreshToken", response?.result?.refreshToken);
-
-          await triggerMyInfo();
-          showSnackbar("Đăng nhập thành công!", "success");
-          navigate("/");
-        }
+        await triggerMyInfo();
+        showSnackbar("Đăng nhập thành công!", "success");
+        navigate("/");
       }
     } catch (error) {
       if (error && error.data && error.data.message) {
