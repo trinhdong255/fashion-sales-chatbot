@@ -42,16 +42,29 @@ const DesktopAuthButton = ({
             <Divider />
 
             <MenuItem
-              onClick={() =>
-                navigate(`/account-information/profile/${myInfo.id}`)
-              }
+              onClick={() => {
+                navigate(`/account-information/profile/${myInfo.id}`);
+                handleMenuClose();
+              }}
             >
               Thông tin người dùng
             </MenuItem>
-            <MenuItem onClick={() => navigate("/my-order")}>
+            <MenuItem
+              onClick={() => {
+                navigate("/my-order");
+                handleMenuClose();
+              }}
+            >
               Đơn hàng của tôi
             </MenuItem>
-            <MenuItem onClick={handleLogout}>Đăng xuất</MenuItem>
+            <MenuItem
+              onClick={() => {
+                handleLogout();
+                handleMenuClose();
+              }}
+            >
+              Đăng xuất
+            </MenuItem>
           </Menu>
         </Box>
       ) : (

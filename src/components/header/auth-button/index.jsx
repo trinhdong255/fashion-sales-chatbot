@@ -2,7 +2,7 @@ import { useTheme, useMediaQuery } from "@mui/material";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { clearUser, selectUser } from "@/store/redux/user/reducer";
+import { selectUser } from "@/store/redux/user/reducer";
 import { useLogoutMutation } from "@/services/api/auth";
 import { clearAuth, selectAuth } from "@/store/redux/auth/reducer";
 import DesktopAuthButton from "./desktop-auth-button";
@@ -48,6 +48,7 @@ const AuthButton = ({ onCloseDrawer }) => {
       localStorage.removeItem("accessToken");
       localStorage.removeItem("refreshToken");
 
+      dispatch(clearAuth());
       dispatch(resetStore());
 
       handleMenuClose();

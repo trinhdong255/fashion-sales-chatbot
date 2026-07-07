@@ -19,18 +19,10 @@ const userSlice = createSlice({
       state.dob = action.payload.dob;
       state.gender = action.payload.gender;
     },
-    clearUser: (state) => {
-      state.id = null;
-      state.name = null;
-      state.email = null;
-      state.avatarUrl = null;
-      state.dob = null;
-      state.gender = null;
-    },
   },
 });
 
-export const { setUserInfo, clearUser } = userSlice.actions;
+export const { setUserInfo } = userSlice.actions;
 export const selectUser = (state) => state.user;
 
 export default userSlice.reducer;

@@ -11,6 +11,8 @@ const AccountSideBar = ({ id }) => {
     },
     { path: `/account-information/address/${id}`, label: "Địa chỉ" },
   ];
+
+
   return (
     <Box
       sx={{
@@ -43,8 +45,7 @@ const AccountSideBar = ({ id }) => {
           key={item.path}
           style={{
             textDecoration: "none",
-            color:
-              location.pathname === item.path ? "black" : "var(--text-color)",
+            color: location.pathname === item.path ? "black" : "#666",
             fontWeight: location.pathname === item.path ? "bold" : "normal",
             fontSize: location.pathname === item.path ? "16px" : "14px",
             lineHeight: location.pathname === item.path ? "24px" : "20px",

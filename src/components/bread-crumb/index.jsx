@@ -1,4 +1,4 @@
-import { slugify } from "@/utils/slugify";
+import { slugify } from "@/utils";
 import { Home, NavigateNext } from "@mui/icons-material";
 import { Box, Breadcrumbs, Container, Typography } from "@mui/material";
 import { useLocation, Link as RouterLink } from "react-router-dom";
