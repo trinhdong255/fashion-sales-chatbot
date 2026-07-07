@@ -4,10 +4,9 @@ import { TAG_KEYS } from "@/constants/tag-keys";
 export const orderApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
     cancelOrder: builder.mutation({
-      query: (orderId, ...orderData) => ({
+      query: (orderId) => ({
         url: `/v1/private/orders/${orderId}/cancel`,
         method: "PUT",
-        data: orderData,
       }),
       invalidatesTags: [TAG_KEYS.ORDER],
     }),
@@ -49,8 +48,9 @@ export const orderApi = baseApi.injectEndpoints({
     }),
 
     getOrdersByCurrentUser: builder.query({
-      query: () => ({
+      query: (orderStatus) => ({
         url: `/v1/private/user/orders`,
+        params: { orderStatus },
       }),
       transformResponse: (response) => {
         return response.result;
