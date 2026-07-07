@@ -12,11 +12,11 @@ import {
   MenuItem,
 } from "@mui/material";
 import { useState, useEffect, useMemo, Fragment } from "react";
-import { normalizeString } from "@/utils/normalize-string";
-import { slugify } from "@/utils/slugify";
+
 import CardProduct from "./card-product";
 import { useGetProductsByCategoryByUserQuery } from "@/services/api/category";
 import { useGetAllProductForUserQuery } from "@/services/api/product";
+import { normalizeString, slugify } from "@/utils";
 
 const ProductItem = ({ selectedCategory, categoryId, searchQuery }) => {
   const [clientPageNo, setClientPageNo] = useState(0);

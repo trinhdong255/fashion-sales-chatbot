@@ -12,10 +12,13 @@ const AddressInformation = () => {
     isLoading: isLoadingAddress,
     isError: isErrorAddress,
     error: errorAddress,
-  } = useGetAllAddressesByUserQuery({
-    page: 0,
-    size: 10,
-  });
+  } = useGetAllAddressesByUserQuery(
+    {
+      page: 0,
+      size: 10,
+    },
+    { refetchOnMountOrArgChange: true },
+  );
 
   const addresses = dataAddress?.result?.items || [];
 
