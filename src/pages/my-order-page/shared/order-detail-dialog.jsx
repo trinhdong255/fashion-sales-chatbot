@@ -60,44 +60,46 @@ const OrderDetailDialog = ({ open, onClose, orderId, onCancelOrder }) => {
           <Box>
             <Grid container spacing={4} mb={3}>
               <Grid size={{ xs: 12, md: 6 }}>
-                <Typography variant="subtitle1" fontWeight="bold" gutterBottom>
+                <Typography variant="h6" fontWeight="bold" mt={1}>
                   Thông tin giao hàng
                 </Typography>
-                <Typography variant="body2" color="text.secondary">
-                  <strong>Người nhận:</strong> {dataOrder.customerName}
+                <Typography variant="body1" fontWeight={"bold"} mt={1}>
+                  Người nhận:{" "}
+                  <Typography variant="span" color="#666" fontWeight={"normal"}>
+                    {dataOrder.customerName || "N/A"}
+                  </Typography>
                 </Typography>
-                <Typography
-                  variant="body2"
-                  color="text.secondary"
-                  sx={{ mt: 0.5 }}
-                >
-                  <strong>Số điện thoại:</strong>{" "}
-                  {dataOrder.address?.phone || "N/A"}
+                <Typography variant="body1" fontWeight={"bold"} mt={1}>
+                  Số điện thoại:{" "}
+                  <Typography variant="span" color="#666" fontWeight={"normal"}>
+                    {dataOrder.address?.phone || "N/A"}
+                  </Typography>
                 </Typography>
-                <Typography
-                  variant="body2"
-                  color="text.secondary"
-                  sx={{ mt: 0.5 }}
-                >
-                  <strong>Địa chỉ:</strong>{" "}
-                  {dataOrder.address
-                    ? `${dataOrder.address.streetDetail}, ${dataOrder.address.ward?.name || ""}, ${
-                        dataOrder.address.district?.name || ""
-                      }, ${dataOrder.address.province?.name || ""}`
-                    : "N/A"}
+                <Typography variant="body1" fontWeight={"bold"} mt={1}>
+                  Địa chỉ:{" "}
+                  <Typography variant="span" color="#666" fontWeight={"normal"}>
+                    {dataOrder.address
+                      ? `${dataOrder.address.streetDetail}, ${dataOrder.address.ward?.name || ""}, ${
+                          dataOrder.address.district?.name || ""
+                        }, ${dataOrder.address.province?.name || ""}`
+                      : "N/A"}
+                  </Typography>
                 </Typography>
               </Grid>
+
               <Grid size={{ xs: 12, md: 6 }}>
-                <Typography variant="subtitle1" fontWeight="bold" gutterBottom>
+                <Typography variant="h6" fontWeight="bold" mt={1}>
                   Thông tin đơn hàng
                 </Typography>
-                <Typography variant="body2" color="text.secondary">
-                  <strong>Ngày đặt hàng:</strong>{" "}
-                  {dayjs(dataOrder.orderDate).format("DD/MM/YYYY HH:mm")}
+                <Typography variant="body1" fontWeight={"bold"} mt={1}>
+                  Ngày đặt hàng:{" "}
+                  <Typography variant="span" color="#666" fontWeight={"normal"}>
+                    {dayjs(dataOrder.orderDate).format("DD/MM/YYYY HH:mm")}
+                  </Typography>
                 </Typography>
                 <Box display="flex" alignItems="center" mt={1}>
-                  <Typography variant="body2" color="text.secondary" mr={1}>
-                    <strong>Trạng thái:</strong>
+                  <Typography variant="body1" fontWeight={"bold"} mr={1}>
+                    Trạng thái:
                   </Typography>
                   <Chip
                     label={
@@ -113,9 +115,9 @@ const OrderDetailDialog = ({ open, onClose, orderId, onCancelOrder }) => {
               </Grid>
             </Grid>
 
-            <Divider sx={{ my: 2 }} />
+            <Divider sx={{ mb: 2 }} />
 
-            <Typography variant="subtitle1" fontWeight="bold" mb={2}>
+            <Typography variant="h6" fontWeight="bold" mb={1}>
               Sản phẩm đã đặt
             </Typography>
             <Stack spacing={2} mb={3}>
@@ -124,8 +126,7 @@ const OrderDetailDialog = ({ open, onClose, orderId, onCancelOrder }) => {
                   <img
                     src={
                       item.image?.imageUrl ||
-                      item.productVariant?.product?.images?.[0]?.imageUrl ||
-                      "https://placehold.co/64"
+                      item.productVariant?.product?.images?.[0]?.imageUrl
                     }
                     alt={item.productVariant?.product?.name || "Product image"}
                     style={{
@@ -137,19 +138,29 @@ const OrderDetailDialog = ({ open, onClose, orderId, onCancelOrder }) => {
                     }}
                   />
                   <Box flex={1}>
-                    <Typography
-                      variant="body1"
-                      fontWeight="bold"
-                      fontSize="0.95rem"
-                    >
+                    <Typography variant="body1" fontWeight="bold">
                       {item.productVariant?.product?.name || "Sản phẩm"}
                     </Typography>
-                    <Typography variant="body2" color="text.secondary">
-                      Phân loại: {item.productVariant?.color?.name || ""},{" "}
-                      {item.productVariant?.size?.name || ""}
+                    <Typography variant="body1" fontWeight={"bold"} mt={0.5}>
+                      Phân loại:{" "}
+                      <Typography
+                        variant="span"
+                        color="#666"
+                        fontWeight={"normal"}
+                      >
+                        {item.productVariant?.color?.name || ""},{" "}
+                        {item.productVariant?.size?.name || ""}
+                      </Typography>
                     </Typography>
-                    <Typography variant="body2" color="text.secondary">
-                      Số lượng: {item.quantity}
+                    <Typography variant="body1" fontWeight={"bold"} mt={0.5}>
+                      Số lượng:{" "}
+                      <Typography
+                        variant="span"
+                        color="#666"
+                        fontWeight={"normal"}
+                      >
+                        {item.quantity}
+                      </Typography>
                     </Typography>
                   </Box>
                   <Typography variant="body1" fontWeight="bold">
@@ -168,7 +179,7 @@ const OrderDetailDialog = ({ open, onClose, orderId, onCancelOrder }) => {
               sx={{ maxWidth: 300, ml: "auto" }}
             >
               <Box display="flex" justifyContent="space-between">
-                <Typography variant="body2" color="text.secondary">
+                <Typography variant="body1" fontWeight={"bold"} mt={0.5} Ï>
                   Giảm giá:
                 </Typography>
                 <Typography variant="body2" fontWeight="bold">

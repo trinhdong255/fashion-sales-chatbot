@@ -118,8 +118,8 @@ const MyOrder = () => {
           scrollButtons="auto"
           sx={{
             my: 4,
-            "& .MuiTab-root": { color: "#666", fontSize: "1rem" },
-            "& .Mui-selected": { color: "#000", fontWeight: "bold" },
+            "& .MuiTab-root": { color: "black", fontSize: "1rem" },
+            "& .Mui-selected": { color: "black", fontWeight: "bold" },
             "& .MuiTabs-indicator": { backgroundColor: "black" },
           }}
         >
@@ -167,12 +167,18 @@ const MyOrder = () => {
                           Mã đơn hàng: #{order.id}
                         </Typography>
                         <Typography
-                          variant="body2"
-                          color="text.secondary"
-                          sx={{ mt: 0.5 }}
+                          variant="body1"
+                          fontWeight={"bold"}
+                          mt={0.5}
                         >
                           Ngày đặt:{" "}
-                          {dayjs(order.orderDate).format("DD/MM/YYYY HH:mm")}
+                          <Typography
+                            variant="span"
+                            color="#666"
+                            fontWeight={"normal"}
+                          >
+                            {dayjs(order.orderDate).format("DD/MM/YYYY HH:mm")}
+                          </Typography>
                         </Typography>
                       </Box>
                       <Chip
@@ -190,24 +196,47 @@ const MyOrder = () => {
 
                     <Grid container spacing={2}>
                       <Grid size={{ xs: 12, sm: 6 }}>
-                        <Typography variant="body2" color="text.secondary">
-                          <strong>Người nhận:</strong> {order.customerName}
+                        <Typography variant="body1" fontWeight={"bold"}>
+                          Người nhận:{" "}
+                          <Typography
+                            variant="span"
+                            color="#666"
+                            fontWeight={"normal"}
+                          >
+                            {order.customerName}
+                          </Typography>
                         </Typography>
                         <Typography
-                          variant="body2"
-                          color="text.secondary"
+                          variant="body1"
+                          fontWeight={"bold"}
                           sx={{ mt: 0.5 }}
                         >
-                          <strong>Số điện thoại:</strong>{" "}
-                          {order.address?.phone || "N/A"}
+                          <Typography variant="body1" fontWeight={"bold"}>
+                            Số điện thoại:{" "}
+                            <Typography
+                              variant="span"
+                              color="#666"
+                              fontWeight={"normal"}
+                            >
+                              {order.address?.phone}
+                            </Typography>
+                          </Typography>
                         </Typography>
                         <Typography
-                          variant="body2"
-                          color="text.secondary"
+                          variant="body1"
+                          fontWeight={"bold"}
                           sx={{ mt: 0.5 }}
                         >
-                          <strong>Địa chỉ:</strong>{" "}
-                          {order.address?.streetDetail || "N/A"}
+                          Địa chỉ:{" "}
+                          <Typography
+                            variant="span"
+                            color="#666"
+                            fontWeight={"normal"}
+                          >
+                            {order.address?.streetDetail},{" "}
+                            {order.address.ward?.name},{" "}
+                            {order.address.district?.name}
+                          </Typography>
                         </Typography>
                       </Grid>
                       <Grid
@@ -221,7 +250,7 @@ const MyOrder = () => {
                           textAlign={{ xs: "left", sm: "right" }}
                           mb={{ xs: 2, sm: 0 }}
                         >
-                          <Typography variant="body2" color="text.secondary">
+                          <Typography variant="body1" color="#666">
                             Tổng thanh toán
                           </Typography>
                           <Typography
